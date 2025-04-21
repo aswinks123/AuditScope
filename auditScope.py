@@ -4,6 +4,7 @@ from modules.list_watch import list_audit_rules
 from modules.remove_watch import remove_watch_by_index
 from modules.list_watch import list_audit_rules
 from modules.clear_screen import clear_screen
+from modules.view_logs import search_logs_by_key
 from modules.ui import header
 
 
@@ -11,7 +12,7 @@ from modules.ui import header
 def welcome():
     while True:
         header()
-        print("1. Add Watch 2. List all Watches 3. Remove Watch 0. Exit")
+        print("1. Add Watch 2. List all Watches 3. Remove Watch 4. View logs 0. Exit")
 
      
 
@@ -42,6 +43,8 @@ def welcome():
             list_audit_rules()
             index=int(input("\nEnter the index number to remove: "))
             remove_watch_by_index(index)
+        if choice == "4":
+                search_logs_by_key()
 
         if choice == '0':
             exit(0)
