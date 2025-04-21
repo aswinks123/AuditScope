@@ -3,7 +3,8 @@ import subprocess
 import subprocess
 import re
 import pwd
-
+from modules.list_with_header import display_rules_with_headings
+from modules.list_watch import list_audit_rules
 def uid_to_username(uid):
     try:
         return pwd.getpwuid(int(uid)).pw_name
@@ -14,11 +15,22 @@ def search_logs_by_key():
     """
     View audit logs in a clean and user-friendly format based on key name.
     """
-    key = input("\nEnter the key name to view logs: ").strip()
-    if not key:
-        print("[✗] Key name cannot be empty.")
+    rules = list_audit_rules()                          
+    if not rules:
+        print("⚠️  No audit rules found.")
+        input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
         return
-    limit_input = input("How many entries do you want to view (defaulut is all): ").strip()
+    else:
+        # Display available rules
+
+        display_rules_with_headings(rules)
+        key = input("\nEnter the key name to view logs: ").strip()
+        if not key:
+            print("[✗] Key name cannot be empty.")
+            input("\nPress Enter to return to menu...")
+            return
+
+    limit_input = input("How many entries do you want to view (default is all): ").strip()
 
     try:
         result = subprocess.run(
@@ -29,33 +41,26 @@ def search_logs_by_key():
         )
 
         logs = result.stdout.strip().split("----")
-        if not logs or logs == ['']:
+        logs = [log.strip() for log in logs if log.strip()]
+        if not logs:
             print(f"[!] No logs found for key '{key}'")
+            input("\nPress Enter to return to menu...")
             return
-        
-        # Apply limit if provided
-        if limit_input.lower() != "all":
+
+        if limit_input.lower() != "all" and limit_input != "":
             try:
                 limit = int(limit_input)
                 logs = logs[-limit:]
             except ValueError:
                 print("[!] Invalid number entered. Showing all entries.")
-        
 
-
-        if limit_input:
-
-            print(f"\n📜 Last {limit_input} logs for key: '{key}'\n" + "-" * 80)
-        else:
-            print(f"\n📜 All logs for key: '{key}'\n" + "-" * 80)
-
+        print(f"\n📜 Displaying logs for key: '{key}'\n" + "-" * 80)
         for log in logs:
             time = re.search(r'time->(.*)', log)
             comm = re.search(r'comm="([^"]+)"', log)
             exe = re.search(r'exe="([^"]+)"', log)
             file = re.search(r'name="([^"]+)"', log)
             op = re.search(r'op=([a-z_]+)', log)
-
             uid = re.search(r'uid=(\d+)', log)
             auid = re.search(r'auid=(\d+)', log)
             ses = re.search(r'ses=(\d+)', log)
@@ -69,11 +74,12 @@ def search_logs_by_key():
             print("📂 File:       ", file.group(1) if file else "N/A")
             print("👤 Command:    ", comm.group(1) if comm else "N/A")
             print("📍 Executable: ", exe.group(1) if exe else "N/A")
-            print("🔐 UID:        ", uid_name )
-            print("🔐 AUID:       ", auid_name )
+            print("🔐 UID:        ", uid_name)
+            print("🔐 AUID:       ", auid_name)
             print("🧾 Session ID: ", ses.group(1) if ses else "N/A")
             print("🖥️  TTY:        ", tty.group(1) if tty else "N/A")
             print("-" * 80)
 
     except subprocess.CalledProcessError as e:
         print(f"[✗] Error while searching logs: {e}")
+    input("\nPress Enter to return to menu...")

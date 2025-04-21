@@ -1,3 +1,23 @@
 def header():
     
-        print("\n AuditScope - Simplified Audit Manager")
+        logo = r"""
+
+                    _ _ _    _____                      
+     /\            | (_) |  / ____|                     
+    /  \  _   _  __| |_| |_| (___   ___ ___  _ __   ___ 
+   / /\ \| | | |/ _` | | __|\___ \ / __/ _ \| '_ \ / _ \
+  / ____ \ |_| | (_| | | |_ ____) | (_| (_) | |_) |  __/
+ /_/    \_\__,_|\__,_|_|\__|_____/ \___\___/| .__/ \___|
+                                            | |         
+                                            |_|         
+                                    
+ ~ AuditScope - Created by Aswin KS ~
+    """
+    
+        description = """
+AuditScope is a command-line tool designed to simplify the management of Linux audit rules using auditctl.
+It allows users to easily add, view, and remove audit watch rules on files and directories for monitoring critical system changes.
+    """
+        print(logo)
+        print(description)
+        print("-" * 130)
