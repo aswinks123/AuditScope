@@ -33,6 +33,8 @@
 
 ✨ Cross-Platform Compatibility: Designed for Linux systems using auditctl and ausearch.​
 
+✨ Efficient error handling mechanism.​
+
 ✨ Built using Python
 
 
