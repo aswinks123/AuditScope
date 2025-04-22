@@ -40,7 +40,7 @@ def remove_function_data_input():
                     rule_to_remove = rules[index]
 
                     while True:
-                        option = input(f"Are you sure you want to remove rule {index} {rule_to_remove} (y/n): ").strip().lower()
+                        option = input(f"Are you sure you want to remove rule " {index} {rule_to_remove}"  (y/n): ").strip().lower()
                         
                         if option == 'y':
                             remove_watch_by_index(index)

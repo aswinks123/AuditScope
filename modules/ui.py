@@ -18,7 +18,9 @@ def header():
 AuditScope is a command-line tool designed to simplify the management of Linux audit rules.
 It allows users to easily add, view, and remove audit watch rules on files and directories for monitoring critical system changes.
 
-To go back : Ctrl + C
+
+Press Ctrl+C to go back
+
     """
         print(logo)
         print(description)
