@@ -145,10 +145,10 @@ Thanks to contributors and the open-source community for their support.​
 ![alt text](/resources/image.png)
 
 
-### Add a new Audit file
+### Add a new audit file
 ![alt text](/resources/image-1.png)
 
-### Delete file from Auditing
+### Delete file from auditing
 ![alt text](/resources/image3.png)
 
 ### View audit logs of the file
