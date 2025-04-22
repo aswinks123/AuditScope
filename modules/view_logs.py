@@ -1,6 +1,4 @@
 import subprocess
-
-import subprocess
 import re
 import pwd
 from modules.list_with_header import display_rules_with_headings

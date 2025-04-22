@@ -2,7 +2,6 @@ import subprocess
 import os
 
 
-
 def check_file_path():
     while True:
         path=input("Enter the absolute file path to audit: ")
@@ -10,11 +9,6 @@ def check_file_path():
             print(f"❌ The specified path '{path}' does not exist.")
             continue
         return path
-
-
-
-
-
 
 
 def get_valid_permissions():
@@ -35,7 +29,6 @@ def get_valid_permissions():
             continue
 
         return unique_permissions
-
 
 
 def add_watch(path, permissions="rwxa", key="default_key"):

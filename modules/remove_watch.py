@@ -7,8 +7,7 @@ from modules.clear_screen import clear_screen
 from modules.ui import header
 
 
-def remove_function_data_input():
-     
+def remove_function_data_input():     
 
     rules = list_audit_rules()                          
     if not rules:
@@ -16,7 +15,6 @@ def remove_function_data_input():
         input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
     else:
         # Display available rules
-
         display_rules_with_headings(rules)
     # Prompt user for index with validation
         while True:
@@ -36,8 +34,6 @@ def remove_function_data_input():
                     if index not in rules:
                         print(f"❌ Invalid index. Please enter a valid rule number")
                         continue  # Ask for input again
-
-
 
                     # If index is valid, proceed to remove the rule
                     rule_to_remove = rules[index]
@@ -66,15 +62,10 @@ def remove_function_data_input():
                             print("❌ Rule not removed.")
                             break  # Exit the loop without removing the rule
                         else:
-                            print("⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")
-
-
-                                            
+                            print("⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")                                            
 
                 except ValueError:
                     print("❌ Invalid input. Please enter a valid number.")
-
-
 
 
 def remove_watch_by_index(index):

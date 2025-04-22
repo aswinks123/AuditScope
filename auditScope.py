@@ -1,3 +1,12 @@
+#==================================================================================================================================================================
+
+#DEVELOPER: Aswin KS
+#DATE: 20-04-2025
+#ABOUT: AuditScope is a command-line tool designed to simplify the management of Linux audit rules.
+#It allows users to easily add, view, and remove audit watch rules on files and directories for monitoring critical system changes.
+
+#==================================================================================================================================================================
+
 from modules.add_watch import add_watch
 from modules.install_auditd import check_and_install_auditctl
 from modules.list_watch import list_audit_rules
@@ -20,18 +29,15 @@ def welcome():
         
         if choice == "1":
                 
-            try:   
-                    
+            try:                       
                 path = check_file_path() #Function to check whether path exist                    
                 perm = get_valid_permissions() #Function to check whether permission is valid    
                 key = input("Enter a key name (e.g my_watch): ")
                 add_watch(path, perm, key=key)
             except KeyboardInterrupt:
                 
-                input("\nOperation cancelled. Press enter to go back..")
+                input("\nOperation cancelled. Press enter to go back..")              
                 
-                
-
         elif choice == "2":
             rules = list_audit_rules()                          
             if not rules:
@@ -40,8 +46,7 @@ def welcome():
             else:
                 # Display available rules
                 display_rules_with_headings(rules)            
-                input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu
-                
+                input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu                
 
         elif choice == "3":
 

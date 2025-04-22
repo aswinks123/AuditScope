@@ -8,8 +8,7 @@ def check_and_install_auditctl():
         print("auditctl is not installed.")
         choice = input("Do you want to install it now? (y/n): ").strip().lower()
         if choice == "y":
-            try:
-                
+            try:                
                 print("[...] Installing auditd...Please wait..")
                 devnull = open('/dev/null', 'w')
                 subprocess.run(["sudo", "apt", "update"], stdout=devnull, stderr=devnull, check=True)
