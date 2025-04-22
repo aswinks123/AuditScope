@@ -3,11 +3,9 @@ import subprocess
 import sys
 
 def check_and_install_auditctl():
-    """
-    Check if auditctl is installed. If not, offer to install it.
-    """
+
     if shutil.which("auditctl") is None:
-        print("[✗] 'auditctl' is not installed.")
+        print("auditctl is not installed.")
         choice = input("Do you want to install it now? (y/n): ").strip().lower()
         if choice == "y":
             try:

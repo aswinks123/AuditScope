@@ -2,10 +2,67 @@ import subprocess
 import subprocess
 import subprocess
 from modules.list_watch import list_audit_rules
+from modules.list_with_header import display_rules_with_headings
+
+def remove_function_data_input():
+     
+
+    rules = list_audit_rules()                          
+    if not rules:
+        print("⚠️  No audit rules found.")
+        input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
+    else:
+        # Display available rules
+
+        display_rules_with_headings(rules)
+    # Prompt user for index with validation
+        while True:
+            index_input = input("\nEnter the index numbner to remove (Press Enter to go back): ").strip()
+            
+            if not index_input:  # If user presses Enter without input
+                print("Returning to main menu.")
+                break  # Exit loop and return to main menu
+            
+            else:            
+
+                try:
+                    # Attempt to convert input to an integer index
+                    index = int(index_input)
+
+                    # Check if the index is valid
+                    if index not in rules:
+                        print(f"❌ Invalid index. Please enter a valid rule number")
+                        continue  # Ask for input again
+
+
+
+                    # If index is valid, proceed to remove the rule
+                    rule_to_remove = rules[index]
+
+                    while True:
+                        option = input(f"Are you sure you want to remove rule {index} {rule_to_remove} (y/n): ").strip().lower()
+                        
+                        if option == 'y':
+                            remove_watch_by_index(index)
+                            print(f"✅ Audit Rule {index} removed successfully.")
+                            break  # Exit the loop after successful removal
+                        elif option == 'n':
+                            print("❌ Rule not removed.")
+                            break  # Exit the loop without removing the rule
+                        else:
+                            print("⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")
+
+
+                                            
+
+                except ValueError:
+                    print("❌ Invalid input. Please enter a valid number.")
+
 
 
 
 def remove_watch_by_index(index):
+
     """
     Remove the watch rule by its index using -W (deletion syntax).
     
@@ -16,11 +73,8 @@ def remove_watch_by_index(index):
     rules = list_audit_rules()
     
     if index in rules:
-        rule_to_remove = rules[index]
-        
-            
-        
-
+        rule_to_remove = rules[index]       
+                    
         # Replace the first '-w' with '-W' for deletion
         rule_parts = rule_to_remove.strip().split()
         if '-w' in rule_parts:
@@ -33,8 +87,10 @@ def remove_watch_by_index(index):
 
         try:
             subprocess.run(cmd, check=True)
-            print(f"✅ Rule removed successfully.")
+       
         except subprocess.CalledProcessError as e:
             print(f"❌ Failed to remove the rule: {e}")
     else:
         print("⚠️ Invalid index number.")
+
+    
