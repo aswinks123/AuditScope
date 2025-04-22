@@ -44,6 +44,7 @@ def remove_function_data_input():
                         if option == 'y':
                             remove_watch_by_index(index)
                             print(f"✅ Audit Rule {index} removed successfully.")
+                            input("\nPress Enter to continue..")
                             rules = list_audit_rules()                          
                             if not rules:
                                 clear_screen()

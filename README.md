@@ -19,7 +19,6 @@
 
 ```
 
-
 ## Features
 
 ✨ Add Audit Rules: Monitor file or directory changes with custom permissions and keys.
@@ -44,7 +43,7 @@
 
 Ensure the following packages are installed:
 ```bash
-auditd It will be installed automatically
+auditd  #It will be installed automatically
 
 sudo
 
@@ -134,8 +133,9 @@ Inspired by various open-source audit tools.
 
 Thanks to contributors and the open-source community for their support.​
 
+## Live Demo
 
-
+![alt text](/resources/auditscope.gif)
 
 ## Sample Screenshot
 
@@ -145,6 +145,9 @@ Thanks to contributors and the open-source community for their support.​
 
 ### Add a new Audit file
 ![alt text](/resources/image-1.png)
+
+### Delete file from Auditing
+![alt text](/resources/image3.png)
 
 ### View audit logs of the file
 ![alt text](/resources/image-2.png)
