@@ -3,6 +3,9 @@ import subprocess
 import subprocess
 from modules.list_watch import list_audit_rules
 from modules.list_with_header import display_rules_with_headings
+from modules.clear_screen import clear_screen
+from modules.ui import header
+
 
 def remove_function_data_input():
      
@@ -17,7 +20,7 @@ def remove_function_data_input():
         display_rules_with_headings(rules)
     # Prompt user for index with validation
         while True:
-            index_input = input("\nEnter the index numbner to remove (Press Enter to go back): ").strip()
+            index_input = input("\nEnter the index number to remove (Press Enter to go back): ").strip()
             
             if not index_input:  # If user presses Enter without input
                 print("Returning to main menu.")
@@ -40,11 +43,24 @@ def remove_function_data_input():
                     rule_to_remove = rules[index]
 
                     while True:
-                        option = input(f"Are you sure you want to remove rule " {index} {rule_to_remove}"  (y/n): ").strip().lower()
+                        option = input(f"Are you sure you want to remove rule  '{index} {rule_to_remove}'  (y/n): ").strip().lower()
                         
                         if option == 'y':
                             remove_watch_by_index(index)
                             print(f"✅ Audit Rule {index} removed successfully.")
+                            rules = list_audit_rules()                          
+                            if not rules:
+                                clear_screen()
+                                header()
+                                print("⚠️  No audit rules found.")
+                                input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
+                            else:
+                                # Display available rules
+                                clear_screen()
+                                header()
+                                display_rules_with_headings(rules)
+
+
                             break  # Exit the loop after successful removal
                         elif option == 'n':
                             print("❌ Rule not removed.")
