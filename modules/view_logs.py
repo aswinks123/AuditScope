@@ -92,14 +92,14 @@ def search_logs_by_key():
         
 
             print("🕒 Time:        ", time.group(1) if time else "N/A")
-            print("⚙️ Operation:    ", op.group(1) if op else "N/A")
+            print("⚙️  Operation:   ", op.group(1) if op else "N/A")
             print("📂 File:        ", file.group(1) if file else "N/A")
             print("👤 Command:     ", comm.group(1) if comm else "N/A")
             print("📍 Executable:  ", exe.group(1) if exe else "N/A")
             print("🔐 UID:         ", uid_name)
             print("🔐 AUID:        ", auid_name)
             print("🧾 Session ID:  ", ses.group(1) if ses else "N/A")
-            print("🖥️ TTY:          ", tty.group(1) if tty else "N/A")
+            print("🖥️  TTY:         ", tty.group(1) if tty else "N/A")
             print("🔑 Key Name:    ", key_match.group(1) if key_match else "N/A")
             print("-" * 80)
     except KeyboardInterrupt:
