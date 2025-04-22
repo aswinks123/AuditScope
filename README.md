@@ -20,5 +20,14 @@
 ```
 
 
-### Sample Screenshot
+## Sample Screenshot
+
+### Home Page
 ![alt text](/resources/image.png)
+
+
+### Add a new Audit file
+![alt text](/resources/image-1.png)
+
+### View audit logs of the file
+![alt text](/resources/image-2.png)
