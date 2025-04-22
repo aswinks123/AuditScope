@@ -79,14 +79,19 @@ def search_logs_by_key():
             exe = re.search(r'exe="([^"]+)"', log)
             file = re.search(r'name="([^"]+)"', log)
             op = re.search(r'op=([a-z_]+)', log)
-            uid = re.search(r'uid=(\d+)', log)
-            auid = re.search(r'auid=(\d+)', log)
+
+            #uid = re.search(r'uid=(\d+)', log)
+            #auid = re.search(r'auid=(\d+)', log)
+
+            uid = re.search(r'\buid=(\d+)', log)
+            auid = re.search(r'\bauid=(\d+)', log)
             ses = re.search(r'ses=(\d+)', log)
             tty = re.search(r'tty=([^\s]+)', log)
             key_match = re.search(r'key="([^"]+)"', log)
 
             uid_name = uid_to_username(uid.group(1)) if uid else "N/A"
             auid_name = uid_to_username(auid.group(1)) if auid else "N/A"
+        
 
             print("🕒 Time:        ", time.group(1) if time else "N/A")
             print("⚙️ Operation:    ", op.group(1) if op else "N/A")
@@ -97,7 +102,7 @@ def search_logs_by_key():
             print("🔐 AUID:        ", auid_name)
             print("🧾 Session ID:  ", ses.group(1) if ses else "N/A")
             print("🖥️ TTY:          ", tty.group(1) if tty else "N/A")
-            print("🔑 Key Name:    ", key_match.group(1) if tty else "N/A")
+            print("🔑 Key Name:    ", key_match.group(1) if key_match else "N/A")
             print("-" * 80)
     except KeyboardInterrupt:
         print("\nOperation interrupted..")
