@@ -186,4 +186,4 @@ Thanks to contributors and the open-source community for their support.​
 ![alt text](/resources/export.png)
 
 ### About Section
-![alt text](/resources/about.png))
+![alt text](/resources/about.png)
