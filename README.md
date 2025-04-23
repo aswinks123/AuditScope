@@ -23,7 +23,7 @@ With AuditScope, you can effortlessly add, view, and remove audit watch rules wi
 ## 🚀 Key Features
 
 
-✨ Add Audit Rules Easily
+✨ Add Audit Rules Permanently
 Monitor critical file or directory changes with custom permissions (r, w, x, a) and associate them with unique audit keys for streamlined tracking.
 
 📋 List Active Rules in One Command
@@ -76,10 +76,11 @@ python3 auditscope.py
 
 ```bash
 1. 🗂️  Add a file to audit
-2. 📌 List all audit Rules
-3. 🗑️  Remove an audit Rule
-4. 📑 View and Download Logs log
-0. ⭕ Exit
+2. 📌  List audit Rules
+3. 🗑️  Remove audit Rule
+4. 📑  View and Download Logs
+5. 🌟  About
+0. ⭕  Exit
 ```
 
 ### Add a File to Audit
@@ -111,6 +112,10 @@ Optionally, specify the number of latest entries to view (default is all).
 The logs will display detailed information, including time, operation, file, command, executable, UID, AUID, session ID, TTY, and key name.
 
 Download the log file to local machine
+
+### About
+
+About the Developer and program
 
 ## Code Structure
 
@@ -151,25 +156,27 @@ Thanks to contributors and the open-source community for their support.​
 
 ## Live Demo
 
-![alt text](/resources/auditscope.gif)
+![alt text](/resources/audit-scope-live.gif)
 
 ## Sample Screenshot
 
 ### Home Page
 ![alt text](/resources/image.png)
 
-
 ### Add a new audit file
-![alt text](/resources/image-1.png)
+![alt text](/resources/add.png)
+
+### View audit rules
+![alt text](/resources/view.png)
 
 ### Delete file from auditing
-![alt text](/resources/image3.png)
+![alt text](/resources/delete.png)
 
 ### View audit logs of the file
-![alt text](/resources/image-2.png)
+![alt text](/resources/logs.png)
 
 ### Export logs to a file
-![alt text](/resources/image-4.png)
+![alt text](/resources/export.png)
 
-![alt text](/resources/image-5.png)
-
+### About Section
+![alt text](/resources/about.png))
