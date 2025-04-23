@@ -170,7 +170,7 @@ Thanks to contributors and the open-source community for their support.​
 ### Home Page
 ![alt text](/resources/image.png)
 
-### Add a new audit file
+### Add a new file to audit
 ![alt text](/resources/add.png)
 
 ### View audit rules
