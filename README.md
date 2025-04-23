@@ -22,30 +22,39 @@ With AuditScope, you can effortlessly add, view, and remove audit watch rules wi
 
 
 ✨ Add Audit Rules Permanently
+
 Monitor critical file or directory changes with custom permissions (r, w, x, a) and associate them with unique audit keys for streamlined tracking.
 
 📋 List Active Rules in One Command
+
 Display all currently active audit rules in a clean, readable format — no more deciphering raw auditctl output.
 
 🗑️ Remove Rules by Index
+
 Safely delete specific audit rules using an intuitive indexed list, minimizing the risk of removing the wrong rule.
 
 🔍 Search Audit Logs by Key
+
 Filter and display audit logs using specific audit keys — quickly identify changes, access attempts, or unauthorized actions.
 
 📤 Export Logs to File
+
 Export filtered audit logs to a timestamped .log file for further analysis, reporting, or incident documentation.
 
 🧑‍💻 User-Friendly Interactive Interface
+
 Guided prompts at every step ensure an intuitive experience for both beginners and advanced users.
 
 🐧 Designed for Linux Systems
+
 Built to work seamlessly with Linux’s auditctl and ausearch, providing native integration with the audit subsystem.
 
 ⚙️ Robust Error Handling
+
 Built-in exception handling for invalid inputs, interruptions, and failed operations — ensuring a smooth user experience.
 
 🐍 Powered by Python
+
 Lightweight, fast, and easy to install with minimal dependencies — suitable for local or remote server environments.
 
 
