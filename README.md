@@ -165,7 +165,7 @@ Thanks to contributors and the open-source community for their support.​
 
 ![alt text](/resources/audit-scope-live.gif)
 
-## Sample Screenshot
+## Sample Screenshots
 
 ### Home Page
 ![alt text](/resources/image.png)
