@@ -3,6 +3,8 @@ import re
 import pwd
 from modules.list_with_header import display_rules_with_headings
 from modules.list_watch import list_audit_rules
+from datetime import datetime, timedelta
+
 def uid_to_username(uid):
     try:
         return pwd.getpwuid(int(uid)).pw_name
@@ -30,11 +32,12 @@ def search_logs_by_key():
                 if key:
                     break
                 print("\n⚠️ Key name cannot be empty. Please try again.")
-                key = input("\nEnter the key name to view logs: ").strip()
-            
 
-        limit_input = input("\nHow many latest entries do you want to view (default is all): ").strip()
+                           
+        
+        limit_input = input("\nHow many entries do you want to view (default is all): ").strip()
 
+     
    
         result = subprocess.run(
             ["sudo", "ausearch", "-k", key],
@@ -102,8 +105,9 @@ def search_logs_by_key():
 
     except subprocess.CalledProcessError as e:
         print(f"\n ❌ Error while searching logs or no logs found with the provided key")
-    
-    
+        input("\nPress Enter to return to menu...")
+        return      
+        
     
     
     export_choice = input("\n📝 Do you want to export these logs to a file? (y/n): ").strip().lower()

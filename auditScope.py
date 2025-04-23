@@ -63,7 +63,6 @@ def welcome():  #Function that print the welcome bannar and choices
         print("\nExting application..")
 
 
-
 if __name__ == "__main__":  #Program starts here
     
     #Call functions
