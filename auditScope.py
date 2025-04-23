@@ -23,7 +23,7 @@ def welcome():  #Function that print the welcome bannar and choices
         while True:
             clear_screen()  # Clear the screen first
             header()  # Display the header
-            print("1.🗂️  Add a file to audit   2.📌 List all audit Rules   3.🗑️  Remove an audit Rule   4.📑 View detailed audit log   0.⭕ Exit")
+            print("1.🗂️  Add a file to audit   2.📌 List all audit Rules   3.🗑️  Remove an audit Rule   4.📑 View and Download Logs   0.⭕ Exit")
             print("-" * 130)
             print("")
             choice = input("Choose an option: ")

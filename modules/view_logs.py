@@ -35,7 +35,7 @@ def search_logs_by_key():
 
         limit_input = input("\nHow many latest entries do you want to view (default is all): ").strip()
 
-   # try:
+   
         result = subprocess.run(
             ["sudo", "ausearch", "-k", key],
             capture_output=True,
@@ -102,6 +102,53 @@ def search_logs_by_key():
 
     except subprocess.CalledProcessError as e:
         print(f"\n ❌ Error while searching logs or no logs found with the provided key")
+    
+    
+    
+    
+    export_choice = input("\n📝 Do you want to export these logs to a file? (y/n): ").strip().lower()
+
+    if export_choice == 'y':
+            file_name = f"audit_logs_{key}.log"
+            try:
+                with open(file_name, "w") as f:
+                    for log in exact_logs:
+                        time = re.search(r'time->(.*)', log)
+                        comm = re.search(r'comm="([^"]+)"', log)
+                        exe = re.search(r'exe="([^"]+)"', log)
+                        file_match = re.search(r'name="([^"]+)"', log)
+                        op = re.search(r'op=([a-z_]+)', log)
+                        uid = re.search(r'\buid=(\d+)', log)
+                        auid = re.search(r'\bauid=(\d+)', log)
+                        ses = re.search(r'ses=(\d+)', log)
+                        tty = re.search(r'tty=([^\s]+)', log)
+                        key_match = re.search(r'key="([^"]+)"', log)
+
+                        uid_name = uid_to_username(uid.group(1)) if uid else "N/A"
+                        auid_name = uid_to_username(auid.group(1)) if auid else "N/A"
+
+                        f.write("🕒 Time:        " + (time.group(1) if time else "N/A") + "\n")
+                        f.write("⚙️  Operation:   " + (op.group(1) if op else "N/A") + "\n")
+                        f.write("📂 File:        " + (file_match.group(1) if file_match else "N/A") + "\n")
+                        f.write("👤 Command:     " + (comm.group(1) if comm else "N/A") + "\n")
+                        f.write("📍 Executable:  " + (exe.group(1) if exe else "N/A") + "\n")
+                        f.write("🔐 UID:         " + uid_name + "\n")
+                        f.write("🔐 AUID:        " + auid_name + "\n")
+                        f.write("🧾 Session ID:  " + (ses.group(1) if ses else "N/A") + "\n")
+                        f.write("🖥️  TTY:         " + (tty.group(1) if tty else "N/A") + "\n")
+                        f.write("🔑 Key Name:    " + (key_match.group(1) if key_match else "N/A") + "\n")
+                        f.write("-" * 130 + "\n")
+
+                print(f"\n✅ Logs exported successfully to {file_name}")
+            except Exception as e:
+                print(f"\n❌ Failed to write logs to file: {e}")
+    elif export_choice == 'n':
+    
+        print(f"\n⚠️ Logs export skipped")        
+
+    else:
+        print(f"\n❌ Invalid option provided")
+
     input("\nPress Enter to return to menu...")
 
     
