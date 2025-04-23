@@ -14,6 +14,7 @@ from modules.remove_watch import remove_function_data_input
 from modules.clear_screen import clear_screen
 from modules.view_logs import search_logs_by_key
 from modules.ui import header
+from modules.check_root import check_root
 from modules.list_with_header import display_rules_with_headings
 from modules.add_watch import get_valid_permissions, check_file_path
 
@@ -66,6 +67,7 @@ def welcome():  #Function that print the welcome bannar and choices
 if __name__ == "__main__":  #Program starts here
     
     #Call functions
-    
-    welcome()
+  
+    check_root()
+    welcome()        
     check_and_install_auditctl()

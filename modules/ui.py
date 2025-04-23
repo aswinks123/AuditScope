@@ -1,4 +1,6 @@
+from modules.list_watch import list_audit_rules
 def header(): #To print UI header
+    
     
         logo = r"""
 
@@ -21,7 +23,17 @@ It allows users to easily add, view, and remove audit watch rules on files and d
 
 Press Ctrl+C to go back
 
-    """
+    """        
+
         print(logo)
         print(description)
+        count_total_audits()
         print("-" * 130)
+
+def count_total_audits():
+
+    total = len(list_audit_rules())
+    print(f"\n📊 Total file Auditing: {total}")
+
+
+
