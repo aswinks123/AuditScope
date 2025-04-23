@@ -29,6 +29,8 @@
 
 ✨ View Audit Logs: Search and display logs filtered by audit key.
 
+✨ Export Audit Logs: Export logs filtered by audit key to a log file.
+
 ✨ User-Friendly Interface: Interactive prompts guide users through each operation.
 
 ✨ Cross-Platform Compatibility: Designed for Linux systems using auditctl and ausearch.​
@@ -66,7 +68,7 @@ python3 auditscope.py
 1. 🗂️  Add a file to audit
 2. 📌 List all audit Rules
 3. 🗑️  Remove an audit Rule
-4. 📑 View detailed audit log
+4. 📑 View and Download Logs log
 0. ⭕ Exit
 ```
 
@@ -90,13 +92,15 @@ Enter the index number of the rule you wish to remove.
 
 Confirm the deletion when prompted.​
 
-### View Detailed Audit Log
+### View and Download Logs
 
 Enter the audit key to filter logs.
 
 Optionally, specify the number of latest entries to view (default is all).
 
 The logs will display detailed information, including time, operation, file, command, executable, UID, AUID, session ID, TTY, and key name.
+
+Download the log file to local machine
 
 ## Code Structure
 

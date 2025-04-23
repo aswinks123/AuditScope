@@ -13,10 +13,8 @@ def uid_to_username(uid):
 
 def search_logs_by_key():
 
-    try:
-  
-        #View audit logs in a clean and user-friendly format based on key name.
-    
+    try:  
+        #View audit logs in a clean and user-friendly format based on key name.    
         rules = list_audit_rules()                          
         if not rules:
             print("\n⚠️  No audit rules found.")
@@ -31,13 +29,9 @@ def search_logs_by_key():
                 key = input("\nEnter the key name to view logs: ").strip()
                 if key:
                     break
-                print("\n⚠️ Key name cannot be empty. Please try again.")
-
-                           
+                print("\n⚠️ Key name cannot be empty. Please try again.")                           
         
-        limit_input = input("\nHow many entries do you want to view (default is all): ").strip()
-
-     
+        limit_input = input("\nHow many entries do you want to view (default is all): ").strip()     
    
         result = subprocess.run(
             ["sudo", "ausearch", "-k", key],
@@ -75,10 +69,6 @@ def search_logs_by_key():
             exe = re.search(r'exe="([^"]+)"', log)
             file = re.search(r'name="([^"]+)"', log)
             op = re.search(r'op=([a-z_]+)', log)
-
-            #uid = re.search(r'uid=(\d+)', log)
-            #auid = re.search(r'auid=(\d+)', log)
-
             uid = re.search(r'\buid=(\d+)', log)
             auid = re.search(r'\bauid=(\d+)', log)
             ses = re.search(r'ses=(\d+)', log)
@@ -106,9 +96,7 @@ def search_logs_by_key():
     except subprocess.CalledProcessError as e:
         print(f"\n ❌ Error while searching logs or no logs found with the provided key")
         input("\nPress Enter to return to menu...")
-        return      
-        
-    
+        return                 
     
     export_choice = input("\n📝 Do you want to export these logs to a file? (y/n): ").strip().lower()
 
