@@ -17,28 +17,23 @@ def search_logs_by_key():
     
         rules = list_audit_rules()                          
         if not rules:
-            print("⚠️  No audit rules found.")
+            print("\n⚠️  No audit rules found.")
             input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
             return
         else:
             # Display available rules
 
-            display_rules_with_headings(rules)
-        
+            display_rules_with_headings(rules)       
 
             while True:
                 key = input("\nEnter the key name to view logs: ").strip()
                 if key:
                     break
-                print("[✗] Key name cannot be empty. Please try again.")
+                print("\n⚠️ Key name cannot be empty. Please try again.")
                 key = input("\nEnter the key name to view logs: ").strip()
             
-            # if not key:
-            #     print("[✗] Key name cannot be empty.")
-            #     input("\nPress Enter to return to menu...")
-            #     return
 
-        limit_input = input("How many latest entries do you want to view (default is all): ").strip()
+        limit_input = input("\nHow many latest entries do you want to view (default is all): ").strip()
 
    # try:
         result = subprocess.run(
@@ -59,7 +54,7 @@ def search_logs_by_key():
                 exact_logs.append(log)
 
         if not exact_logs:
-            print(f"[!] No logs found for key '{key}'")
+            print(f"\n ❌ No logs found for key '{key}'")
             input("\nPress Enter to return to menu...")
             return
 
@@ -68,9 +63,9 @@ def search_logs_by_key():
                 limit = int(limit_input)
                 exact_logs = exact_logs[-limit:]
             except ValueError:
-                print("[!] Invalid number entered. Showing all entries.")
+                print("\n⚠️ Invalid number entered. Showing all entries.")
 
-        print(f"\n📜 Displaying logs for key: '{key}'\n" + "-" * 80)
+        print(f"\n📜 Displaying logs for key: '{key}'\n" + "-" * 130)
         for log in exact_logs:
             time = re.search(r'time->(.*)', log)
             comm = re.search(r'comm="([^"]+)"', log)
@@ -101,12 +96,12 @@ def search_logs_by_key():
             print("🧾 Session ID:  ", ses.group(1) if ses else "N/A")
             print("🖥️  TTY:         ", tty.group(1) if tty else "N/A")
             print("🔑 Key Name:    ", key_match.group(1) if key_match else "N/A")
-            print("-" * 80)
+            print("-" * 130)
     except KeyboardInterrupt:
         print("\nOperation interrupted..")
 
     except subprocess.CalledProcessError as e:
-        print(f"[✗] Error while searching logs: {e}")
+        print(f"\n ❌ Error while searching logs or no logs found with the provided key")
     input("\nPress Enter to return to menu...")
 
     

@@ -11,7 +11,7 @@ def remove_function_data_input():
 
     rules = list_audit_rules()                          
     if not rules:
-        print("⚠️  No audit rules found.")
+        print("\n⚠️  No audit rules found.")
         input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
     else:
         # Display available rules
@@ -32,24 +32,24 @@ def remove_function_data_input():
 
                     # Check if the index is valid
                     if index not in rules:
-                        print(f"❌ Invalid index. Please enter a valid rule number")
+                        print(f"\n❌ Invalid index. Please enter a valid rule number")
                         continue  # Ask for input again
 
                     # If index is valid, proceed to remove the rule
                     rule_to_remove = rules[index]
 
                     while True:
-                        option = input(f"Are you sure you want to remove rule  '{index} {rule_to_remove}'  (y/n): ").strip().lower()
+                        option = input(f"\nAre you sure you want to remove rule  {index} '{rule_to_remove}' (y/n): ").strip().lower()
                         
                         if option == 'y':
                             remove_watch_by_index(index)
-                            print(f"✅ Audit Rule {index} removed successfully.")
+                            print(f"\n✅ Audit Rule {index} removed successfully.")
                             input("\nPress Enter to continue..")
                             rules = list_audit_rules()                          
                             if not rules:
                                 clear_screen()
                                 header()
-                                print("⚠️  No audit rules found.")
+                                print("\n⚠️  No audit rules found.")
                                 input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
                             else:
                                 # Display available rules
@@ -60,13 +60,13 @@ def remove_function_data_input():
 
                             break  # Exit the loop after successful removal
                         elif option == 'n':
-                            print("❌ Rule not removed.")
+                            print("\n❌ Rule not removed.")
                             break  # Exit the loop without removing the rule
                         else:
-                            print("⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")                                            
+                            print("\n⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")                                            
 
                 except ValueError:
-                    print("❌ Invalid input. Please enter a valid number.")
+                    print(f"\n❌ Invalid index. Please enter a valid rule number")
 
 
 def remove_watch_by_index(index):
@@ -97,8 +97,8 @@ def remove_watch_by_index(index):
             subprocess.run(cmd, check=True)
        
         except subprocess.CalledProcessError as e:
-            print(f"❌ Failed to remove the rule: {e}")
+            print(f"\n❌ Failed to remove the rule: {e}")
     else:
-        print("⚠️ Invalid index number.")
+        print("\n⚠️Invalid index number.")
 
     

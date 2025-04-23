@@ -5,7 +5,7 @@ def display_rules_with_headings(rules_dict):
         print("⚠️  No audit rules found.")
         return
 
-    print(f"{'Index':<6} {'File name':<40} {'Permissions':<12} {'Audit key name':<20}")
+    print(f"{'Index':<6} {'File name':<40} {'Permissions':<12} {'Key name':<20}")
     print("-" * 130)
 
     for index, rule in rules_dict.items():

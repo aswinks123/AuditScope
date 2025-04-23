@@ -48,7 +48,8 @@ def add_watch(path, permissions="rwxa", key="default_key"):
 
         cmd = ["auditctl", "-w", path, "-p", permissions, "-k", key]
         subprocess.run(["sudo"] + cmd, check=True)
-        print(f"✅ '{path}' successfully added for auditing.")
+        
+        print(f"\n✅ '{path}' successfully added for auditing.")
         
         input("\nPress Enter to go back to main menu")
     except subprocess.CalledProcessError as e:

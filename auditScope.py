@@ -17,49 +17,56 @@ from modules.ui import header
 from modules.list_with_header import display_rules_with_headings
 from modules.add_watch import get_valid_permissions, check_file_path
 
-def welcome():
-    while True:
-        clear_screen()  # Clear the screen first
-        header()  # Display the header
-        print("1.🗂️  Add a file to audit   2.📌 List all audit Rules   3.🗑️  Remove an audit Rule   4.📑 View detailed audit log   0.⭕ Exit")
-        print("-" * 130)
-        print("")
-        choice = input("Choose an option: ")
-        print("-" * 130)
-        
-        if choice == "1":
-                
-            try:                       
-                path = check_file_path() #Function to check whether path exist                    
-                perm = get_valid_permissions() #Function to check whether permission is valid    
-                key = input("Enter a key name (e.g my_watch): ")
-                add_watch(path, perm, key=key)
-            except KeyboardInterrupt:
-                
-                input("\nOperation cancelled. Press enter to go back..")              
-                
-        elif choice == "2":
-            rules = list_audit_rules()                          
-            if not rules:
-                print("⚠️  No audit rules found.")
-                input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu
-            else:
-                # Display available rules
-                display_rules_with_headings(rules)            
-                input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu                
+def welcome():  #Function that print the welcome bannar and choices
 
-        elif choice == "3":
-
-            remove_function_data_input()           
+    try:
+        while True:
+            clear_screen()  # Clear the screen first
+            header()  # Display the header
+            print("1.🗂️  Add a file to audit   2.📌 List all audit Rules   3.🗑️  Remove an audit Rule   4.📑 View detailed audit log   0.⭕ Exit")
+            print("-" * 130)
+            print("")
+            choice = input("Choose an option: ")
+            print("-" * 130)
             
-        elif choice == "4":
+            if choice == "1":   #Add a file to audit
+                    
+                try:                       
+                    path = check_file_path() #Function to check whether path exist                    
+                    perm = get_valid_permissions() #Function to check whether permission is valid    
+                    key = input("Enter a key name (e.g my_watch): ")
+                    add_watch(path, perm, key=key)
+                except KeyboardInterrupt:                
+                    input("\nOperation cancelled. Press enter to go back..")              
+                    
+            elif choice == "2": #List all audit Rules
+                rules = list_audit_rules()                          
+                if not rules:
+                    print("\n⚠️  No audit rules found.")
+                    input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu
+                else:
+                    # Display available rules
+                    display_rules_with_headings(rules)            
+                    input("\nPress Enter to go back to main menu.")  # Wait for user input before returning to the menu                
 
-            search_logs_by_key()
+            elif choice == "3": #Remove an audit Rule 
 
-        elif choice == '0':
-            exit(0)
+                remove_function_data_input()           
+                
+            elif choice == "4": #View detailed audit log
 
-if __name__ == "__main__":
+                search_logs_by_key()
+
+            elif choice == '0': #Exit choice
+                exit(0)
+    except KeyboardInterrupt:
+        print("\nExting application..")
+
+
+
+if __name__ == "__main__":  #Program starts here
+    
+    #Call functions
     
     welcome()
     check_and_install_auditctl()
