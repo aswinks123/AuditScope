@@ -13,7 +13,7 @@ from modules.list_watch import list_audit_rules
 from modules.remove_watch import remove_function_data_input
 from modules.clear_screen import clear_screen
 from modules.view_logs import search_logs_by_key
-from modules.ui import header
+from modules.ui import header, print_about
 from modules.check_root import check_root
 from modules.list_with_header import display_rules_with_headings
 from modules.add_watch import get_valid_permissions, check_file_path
@@ -24,7 +24,7 @@ def welcome():  #Function that print the welcome bannar and choices
         while True:
             clear_screen()  # Clear the screen first
             header()  # Display the header
-            print("1.🗂️  Add a file to audit   2.📌 List all audit Rules   3.🗑️  Remove an audit Rule   4.📑 View and Download Logs   0.⭕ Exit")
+            print("1.🗂️  Add a file to audit   2.📌 List audit Rules   3.🗑️  Remove audit Rule   4.📑 View and Download Logs   5.🌟 About    0.⭕ Exit")
             print("-" * 130)
             print("")
             choice = input("Choose an option: ")
@@ -57,6 +57,11 @@ def welcome():  #Function that print the welcome bannar and choices
             elif choice == "4": #View detailed audit log
 
                 search_logs_by_key()
+
+            elif choice == "5":
+                clear_screen()
+                print_about()
+                input("\nPress Enter to go back to main menu.")
 
             elif choice == '0': #Exit choice
                 exit(0)

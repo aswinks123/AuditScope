@@ -141,6 +141,6 @@ def search_logs_by_key():
     else:
         print(f"\n❌ Invalid option provided")
 
-    input("\nPress Enter to return to menu...")
+    input("\nPress Enter to go back to main menu")
 
     

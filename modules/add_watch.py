@@ -43,7 +43,7 @@ def add_watch(path, permissions="rwxa", key="default_key"):
 
         if not os.path.exists(path):
             print(f"❌ The specified path '{path}' does not exist.")
-            input("Press enter to go back..")
+            input("Press Enter to go back to main menu")
             return                    
 
         # Define the audit rule
@@ -64,6 +64,6 @@ def add_watch(path, permissions="rwxa", key="default_key"):
         
         print(f"\n✅ '{path}' successfully added for auditing.")
         
-        input("\nPress Enter to go back to main menu")
+        input("\nPress Enter to go back to main men")
     except subprocess.CalledProcessError as e:
         print(f"❌  Failed to audit the file: {e}")

@@ -66,7 +66,7 @@ def remove_function_data_input():
                             print("\n⚠️ Invalid input. Please enter 'y' for yes or 'n' for no.")                                            
 
                 except ValueError:
-                    print(f"\n❌ Invalid index. Please enter a valid rule number")
+                    print(f"\n❌ Invalid index. Please enter a valid index number")
 
 
 def remove_watch_by_index(index):
@@ -88,7 +88,7 @@ def remove_watch_by_index(index):
         if '-w' in rule_parts:
             rule_parts[rule_parts.index('-w')] = '-W'
         else:
-            print("Invalid rule format, missing '-w'")
+            print("❌ Invalid rule format, missing '-w'")
             return
 
         cmd = ["sudo", "auditctl"] + rule_parts
