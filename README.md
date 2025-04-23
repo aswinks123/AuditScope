@@ -157,3 +157,9 @@ Thanks to contributors and the open-source community for their support.​
 
 ### View audit logs of the file
 ![alt text](/resources/image-2.png)
+
+### Export logs to a file
+![alt text](/resources/image-4.png)
+
+![alt text](/resources/image-5.png)
+
