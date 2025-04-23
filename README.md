@@ -2,7 +2,8 @@
 
 <div style="display: flex; align-items: center;">
     <img src="resources/logo.png" alt="NixVault Icon" width="50" style="margin-right: 10px;"/>
-    <p>AuditScope is a command-line tool designed to simplify the management of Linux audit rules. It allows users to easily add, view, and remove audit watch rules on files and directories for monitoring critical system changes.</p>
+    <p>AuditScope is a feature-rich, user-friendly command-line tool designed to simplify and enhance the management of Linux audit rules. It empowers system administrators, DevOps engineers, and security professionals to efficiently monitor and protect critical files, directories, and system activities using the Linux Audit System.
+With AuditScope, you can effortlessly add, view, and remove audit watch rules without memorizing complex auditctl syntax. Whether you're tracking unauthorized changes to sensitive files or ensuring compliance with security policies, AuditScope helps you maintain visibility and control over your system’s audit trail.</p>
 </div>
 
 ```
@@ -19,26 +20,35 @@
 
 ```
 
-## Features
+## 🚀 Key Features
 
-✨ Add Audit Rules: Monitor file or directory changes with custom permissions and keys.
 
-✨ List Existing Rules: View all active audit rules in a structured format.
+✨ Add Audit Rules Easily
+Monitor critical file or directory changes with custom permissions (r, w, x, a) and associate them with unique audit keys for streamlined tracking.
 
-✨ Remove Audit Rules: Safely delete specific audit rules by index.
+📋 List Active Rules in One Command
+Display all currently active audit rules in a clean, readable format — no more deciphering raw auditctl output.
 
-✨ View Audit Logs: Search and display logs filtered by audit key.
+🗑️ Remove Rules by Index
+Safely delete specific audit rules using an intuitive indexed list, minimizing the risk of removing the wrong rule.
 
-✨ Export Audit Logs: Export logs filtered by audit key to a log file.
+🔍 Search Audit Logs by Key
+Filter and display audit logs using specific audit keys — quickly identify changes, access attempts, or unauthorized actions.
 
-✨ User-Friendly Interface: Interactive prompts guide users through each operation.
+📤 Export Logs to File
+Export filtered audit logs to a timestamped .log file for further analysis, reporting, or incident documentation.
 
-✨ Cross-Platform Compatibility: Designed for Linux systems using auditctl and ausearch.​
+🧑‍💻 User-Friendly Interactive Interface
+Guided prompts at every step ensure an intuitive experience for both beginners and advanced users.
 
-✨ Efficient error handling mechanism.​
+🐧 Designed for Linux Systems
+Built to work seamlessly with Linux’s auditctl and ausearch, providing native integration with the audit subsystem.
 
-✨ Built using Python
+⚙️ Robust Error Handling
+Built-in exception handling for invalid inputs, interruptions, and failed operations — ensuring a smooth user experience.
 
+🐍 Powered by Python
+Lightweight, fast, and easy to install with minimal dependencies — suitable for local or remote server environments.
 
 
 ## Installation
