@@ -46,6 +46,19 @@ def add_watch(path, permissions="rwxa", key="default_key"):
             input("Press enter to go back..")
             return                    
 
+        # Define the audit rule
+        audit_rule = f"-w {path} -p {permissions} -k {key}\n"
+
+        # Path to the audit rules file
+        audit_rules_file = '/etc/audit/rules.d/custom.rules'
+
+        # Append the rule to the audit file
+        with open(audit_rules_file, 'a') as file:
+            file.write(audit_rule)
+
+        # Reload the audit rules to apply the new rule
+        subprocess.run(["sudo", "augenrules"], check=True)
+        
         cmd = ["auditctl", "-w", path, "-p", permissions, "-k", key]
         subprocess.run(["sudo"] + cmd, check=True)
         

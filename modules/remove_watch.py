@@ -1,10 +1,9 @@
 import subprocess
-import subprocess
-import subprocess
 from modules.list_watch import list_audit_rules
 from modules.list_with_header import display_rules_with_headings
 from modules.clear_screen import clear_screen
 from modules.ui import header
+import os
 
 
 def remove_function_data_input():     
@@ -51,6 +50,7 @@ def remove_function_data_input():
                                 header()
                                 print("\n⚠️  No audit rules found.")
                                 input("\nPress Enter to go back to main menu")  # Wait for user input before returning to the menu
+                                return
                             else:
                                 # Display available rules
                                 clear_screen()
@@ -95,6 +95,20 @@ def remove_watch_by_index(index):
 
         try:
             subprocess.run(cmd, check=True)
+
+            # Now remove the rule from the configuration file as well
+            audit_rules_file = '/etc/audit/rules.d/custom.rules'  # Update with correct path if needed
+            if os.path.exists(audit_rules_file):
+                with open(audit_rules_file, 'r') as file:
+                    lines = file.readlines()
+                 # Find the rule in the file and remove it
+                with open(audit_rules_file, 'w') as file:
+                    for line in lines:
+                        if rule_to_remove.strip() not in line:
+                            file.write(line)
+                    # Optionally, reload audit rules
+                subprocess.run(["sudo", "augenrules"], check=True)
+
        
         except subprocess.CalledProcessError as e:
             print(f"\n❌ Failed to remove the rule: {e}")
